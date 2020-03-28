@@ -6,9 +6,9 @@ At this stage, this codebase is meant to provide a sample code.
 
 ## Prerequiste
 
-1. Node.js
-2. NPM or Yarn (yarn recommended)
-3. Google API Credentials, store in `credentials.json`
+1. [Node.js](https://nodejs.org/en/)
+2. NPM or [Yarn](https://yarnpkg.com/) (Yarn recommended).
+3. Google API Credentials, store in `credentials.json`. More information at [QuickStart](https://developers.google.com/sheets/api/quickstart/nodejs) step 1.
 
 ## Getting started
 
