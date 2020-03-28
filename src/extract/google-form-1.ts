@@ -58,8 +58,14 @@ async function extract (): Promise<MedicalEquipmentNeeds[]> {
 }
 
 export async function run () {
-  const s = await extract()
-  fs.writeFileSync('/tmp/data.json', JSON.stringify(s, null, 2), { encoding: 'utf8' })
+  const path = process.env.TARGET_PATH
+  if (!path) {
+    console.log('Please specify target path in .env with name TARGET_PATH')
+    return
+  }
+  const data = await extract()
+  console.log('Rows = ', data.length)
+  fs.writeFileSync(path, JSON.stringify(data, null, 2), { encoding: 'utf8' })
 }
 
 run().then(() => console.log('Done'))
