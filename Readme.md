@@ -26,7 +26,7 @@ At this stage, this codebase is meant to provide a sample code.
 7. Look at the result in file put at step 3 (TARGET_PATH)
 
 ## Note 
-for .evn
+For ==> .evn
 MEDICAL_NEED_SPREASHEET_ID=changeme
 
 TARGET_PATH_1=/yourpath/data1.json --> for sheet "อาสาดุสิต"
