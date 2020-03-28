@@ -15,7 +15,12 @@ At this stage, this codebase is meant to provide a sample code.
 1. Install dependencies using `yarn` or `npm install`
 2. Get Environment variable need from the team
 3. Set Target Path in .env file TARGET_PATH
-4. Fetch oAuth token using `node ./fetchToken.js`
-5. Build JS from Typescript using `yarn build` or `yarn tsc:watch`
+4. Build JS from Typescript using `yarn build` or `yarn tsc:watch`
+5. Fetch oAuth token using `node ./fetchToken.js` and do steps as in these screenshots
+
+![1](/resources/fetch-token-1.png)
+
+![2](/resources/fetch-token-2.png)
+
 6. run `node ./dist/extract/google-form-1.js`
 7. Look at the result in file put at step 3 (TARGET_PATH)
