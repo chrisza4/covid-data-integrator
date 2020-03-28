@@ -1,4 +1,4 @@
-import { getGoogleSheets } from '../GoogleSheet'
+import { getGoogleSheets } from '../google'
 import * as dotenv from 'dotenv'
 import fs from 'fs'
 dotenv.config()
