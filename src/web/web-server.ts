@@ -1,6 +1,6 @@
 import express from 'express'
 import path from 'path'
-import { getToken } from '../google'
+import { getToken, getAuthUrl, saveToken } from '../google'
 import Config from '../config'
 
 const port = Config.PORT
@@ -11,7 +11,17 @@ app.set('views', path.join(__dirname, '../../views'))
 
 app.get('/', (req, res) => {
   const tokenExists = !!getToken()
-  res.render('index', { tokenExists: tokenExists })
+  const authUrl = getAuthUrl()
+  res.render('index', { tokenExists, authUrl })
+})
+
+app.get('/oauth-callback', async (req, res) => {
+  const code = req.query.code
+  if (!code) {
+    return res.status(422).send('Invalid code')
+  }
+  await saveToken(code)
+  return res.redirect('/')
 })
 
 app.listen(port, () => console.log(`Listen at port ${port}`))
