@@ -58,9 +58,9 @@ async function extract (): Promise<MedicalEquipmentNeeds[]> {
 }
 
 export async function run () {
-  const path = process.env.TARGET_PATH
+  const path = process.env.TARGET_PATH_1
   if (!path) {
-    console.log('Please specify target path in .env with name TARGET_PATH')
+    console.log('Please specify target path in .env with name TARGET_PATH_1')
     return
   }
   const data = await extract()
