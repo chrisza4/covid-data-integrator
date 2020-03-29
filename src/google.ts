@@ -36,3 +36,21 @@ export function getAuth (): any {
 export function getGoogleSheets () {
   return google.sheets({ version: 'v4', auth: getAuth() })
 }
+
+export async function getWholeGoogleSheetData (spreadSheetId: string, sheetIndex: number) {
+  const googleSheets = getGoogleSheets()
+  const spreadsheet = await googleSheets.spreadsheets.get({
+    spreadsheetId: spreadSheetId
+  })
+  const sheets = spreadsheet.data.sheets
+  if (!sheets) {
+    console.log('Sheets not exists')
+    return
+  }
+  const sheetTitle = sheets[sheetIndex].properties?.title
+  const sheetData = await googleSheets.spreadsheets.values.get({
+    spreadsheetId: spreadSheetId,
+    range: sheetTitle
+  })
+  return sheetData.data.values
+}

@@ -1,29 +1,14 @@
-import { getGoogleSheets } from '../google'
+import { getWholeGoogleSheetData } from '../google'
 import * as dotenv from 'dotenv'
 import fs from 'fs'
 dotenv.config()
 
-async function getWholeSheetData () {
-  const sheetId = process.env.MEDICAL_NEED_SPREASHEET_ID
-  const googleSheets = getGoogleSheets()
-  const spreadsheet = await googleSheets.spreadsheets.get({
-    spreadsheetId: sheetId
-  })
-  const sheets = spreadsheet.data.sheets
-  if (!sheets) {
-    console.log('Sheets not exists')
-    return
-  }
-  const sheetTitle = sheets[0].properties?.title
-  const sheetData = await googleSheets.spreadsheets.values.get({
-    spreadsheetId: sheetId,
-    range: sheetTitle
-  })
-  return sheetData.data.values
-}
-
 async function extract (): Promise<MedicalEquipmentNeeds[]> {
-  const data = await getWholeSheetData()
+  const spreadSheetId = process.env.MEDICAL_NEED_SPREASHEET_ID
+  if (!spreadSheetId) {
+    throw Error('Please set environment variable MEDICAL_NEED_SPREASHEET_ID')
+  }
+  const data = await getWholeGoogleSheetData(spreadSheetId, 0)
   if (!data) {
     return []
   }
