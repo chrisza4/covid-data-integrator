@@ -1,5 +1,6 @@
 import { google } from 'googleapis'
 import fs from 'fs'
+const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 let _auth: any = null
 
@@ -22,9 +23,26 @@ export function loadCredentials (): GoogleCredentials {
   }
 }
 
+export function getAuthUrl () {
+  return getAuth().generateAuthUrl({
+    access_type: 'offline',
+    scope: SCOPES
+  })
+}
+
+export async function saveToken (code: string) {
+  const oAuth2Client = getAuth()
+  const token = await oAuth2Client.getToken(code)
+  fs.writeFileSync('./token.json', JSON.stringify(token))
+}
+
+export function getToken () {
+  return JSON.parse(fs.readFileSync('./token.json', { encoding: 'utf8' }))
+}
+
 export function getAuth (): any {
   if (!_auth) {
-    const token = JSON.parse(fs.readFileSync('./token.json', { encoding: 'utf8' }))
+    const token = getToken()
     const { clientId, clientSecret, redirectUris } = loadCredentials()
     const oAuth2Client = new google.auth.OAuth2(clientId, clientSecret, redirectUris[0])
     oAuth2Client.setCredentials(token)

@@ -1,0 +1,6 @@
+<% if (tokenExists) { %>
+  <h1>Already login. You are good to fetch data.</h1>
+<% } else { %>
+  <h1>Please sign in with Google Id before fetching the data</h1>
+<% } %>
+<a href="<%= authUrl %>">Login (again?) with google</a>
