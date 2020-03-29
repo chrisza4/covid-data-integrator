@@ -3,7 +3,7 @@ import path from 'path'
 import { getToken, getAuthUrl, saveToken } from '../google'
 import Config from '../config'
 
-const port = Config.PORT
+const port = Config.PORT || 3000
 
 const app = express()
 app.set('view engine', 'ejs')
