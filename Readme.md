@@ -10,22 +10,20 @@ At this stage, this codebase is meant to provide a sample code.
 2. NPM or [Yarn](https://yarnpkg.com/) (Yarn recommended).
 3. Google API Credentials, store in `credentials.json`. More information at [QuickStart](https://developers.google.com/sheets/api/quickstart/nodejs) step 1.
 
+For development environment, please set Google credential redirect uri at http://localhost:3000/oauth-callback
+
 ## Getting started
 
 1. Install dependencies using `yarn` or `npm install`
 2. Get Environment variable need from the team
 3. Set Target Path in .env file TARGET_PATH
 4. Build JS from Typescript using `yarn build` or `yarn tsc:watch`
-5. Fetch oAuth token using `node ./fetchToken.js` and do steps as in these screenshots
+5. run `yarn dev-web` in another terminal and open http://localhost:3000
+6. If you see a message `Please sign in with Google Id before fetching the data`, click on Login with Google
+7. Authorize the app to have access to Google Sheet
+8. Look at the result in file put at step 3 (TARGET_PATH)
 
-![1](/resources/fetch-token-1.png)
-
-![2](/resources/fetch-token-2.png)
-
-6. run `node ./dist/extract/google-form-1.js`
-7. Look at the result in file put at step 3 (TARGET_PATH)
-
-## Note 
+## Note
 For ==> .evn
 
 MEDICAL_NEED_SPREASHEET_ID=changeme

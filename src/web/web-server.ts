@@ -24,4 +24,6 @@ app.get('/oauth-callback', async (req, res) => {
   return res.redirect('/')
 })
 
-app.listen(port, () => console.log(`Listen at port ${port}`))
+app.listen(port, () => {
+  console.log(`Listen at port ${port}`)
+})

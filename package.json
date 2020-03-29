@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "tsc:watch": "tsc --watch",
-    "dev": "nodemon ./dist/web/web-server.js",
+    "dev-web": "nodemon ./dist/web/web-server.js",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -35,6 +35,7 @@
     "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
-    "googleapis": "39"
+    "googleapis": "39",
+    "open": "^7.0.3"
   }
 }
