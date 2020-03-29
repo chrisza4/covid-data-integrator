@@ -22,9 +22,13 @@ export function loadCredentials (): GoogleCredentials {
   }
 }
 
+export function getToken () {
+  return JSON.parse(fs.readFileSync('./token.json', { encoding: 'utf8' }))
+}
+
 export function getAuth (): any {
   if (!_auth) {
-    const token = JSON.parse(fs.readFileSync('./token.json', { encoding: 'utf8' }))
+    const token = getToken()
     const { clientId, clientSecret, redirectUris } = loadCredentials()
     const oAuth2Client = new google.auth.OAuth2(clientId, clientSecret, redirectUris[0])
     oAuth2Client.setCredentials(token)

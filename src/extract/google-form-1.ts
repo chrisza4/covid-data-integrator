@@ -1,10 +1,9 @@
 import { getWholeGoogleSheetData } from '../google'
-import * as dotenv from 'dotenv'
+import Config from '../config'
 import fs from 'fs'
-dotenv.config()
 
 async function extract (): Promise<MedicalEquipmentNeeds[]> {
-  const spreadSheetId = process.env.MEDICAL_NEED_SPREASHEET_ID
+  const spreadSheetId = Config.MEDICAL_NEED_SPREASHEET_ID
   if (!spreadSheetId) {
     throw Error('Please set environment variable MEDICAL_NEED_SPREASHEET_ID')
   }
@@ -43,7 +42,7 @@ async function extract (): Promise<MedicalEquipmentNeeds[]> {
 }
 
 export async function run () {
-  const path = process.env.TARGET_PATH_1
+  const path = Config.TARGET_PATH_1
   if (!path) {
     console.log('Please specify target path in .env with name TARGET_PATH_1')
     return
