@@ -32,8 +32,8 @@ export function getAuthUrl () {
 
 export async function saveToken (code: string) {
   const oAuth2Client = getAuth()
-  const token = await oAuth2Client.getToken(code)
-  fs.writeFileSync('./token.json', JSON.stringify(token))
+  const tokenResponse = await oAuth2Client.getToken(code)
+  fs.writeFileSync('./token.json', JSON.stringify(tokenResponse.tokens))
 }
 
 export function getToken () {
