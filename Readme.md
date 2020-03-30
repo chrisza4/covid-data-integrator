@@ -24,10 +24,10 @@ For development environment, please set Google credential redirect uri at http:/
 8. Look at the result in file put at step 3 (TARGET_PATH)
 
 ## Note
-For ==> .evn
+**Example** .env file
 
+```
 MEDICAL_NEED_SPREASHEET_ID=changeme
-
-TARGET_PATH_1=/yourpath/data1.json --> for sheet "อาสาดุสิต"
-
-TARGET_PATH_2=/yourpath/data2.json --> for sheet "หาชุดหมีให้พี่หมอ"
+TARGET_PATH_1=/yourpath/data1.json # --> for sheet "อาสาดุสิต"
+TARGET_PATH_2=/yourpath/data2.json # --> for sheet "หาชุดหมีให้พี่หมอ"
+```
